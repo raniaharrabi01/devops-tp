@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "tonusername/hello-devops"
+    }
+
+    stages {
+        stage('Build Docker') {
+            steps {
+                script {
+                    sh 'docker build -t ${DOCKER_IMAGE} .'
+                }
+            }
+        }
+
+        stage('Push Docker') {
+            steps {
+                script {
+                    // Simuler un push vers DockerHub
+                    sh 'echo "docker push ${DOCKER_IMAGE}"'
+                }
+            }
+        }
+    }
+}
